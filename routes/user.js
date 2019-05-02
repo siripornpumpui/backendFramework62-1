@@ -23,12 +23,14 @@ router.get('/list/:pageNumber', (req, res) => {
             dbo
                 .collection('userLoginTable')
                 .find({}, {
-                    limit: itemPerPage,
-                    skip: itemPerPage * (Number(pageNumber) - 1),
+                    limit: 10,
+                    skip: 10 * (Number(pageNumber) - 1),
                     projection: {
-                        _id: 1,
+                        _id: 0,
                         rank: 1,
-                        first_name: 1
+                        first_name: 1,
+                        last_name: 1,
+                        username: 1
                     }
                 })
                 .sort({
